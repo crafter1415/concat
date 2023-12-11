@@ -26,10 +26,10 @@ tellraw @a {"storage":"concat:","nbt":"result"}
 
 ```mcfunction
 # 1. concat: args に結合したい文字列群を設定する
-data modify storage concat: first set value ["effect give @s ","resistance"," ","infinite"," ","5"," ","true"]
+data modify storage concat: args set value ["effect give @s ","resistance"," ","infinite"," ","5"," ","true"]
 
 # 2. concat:concat を呼び出す
-function concat:concat
+function concat:concat_all
 
 # 3. 結合結果が concat: result に配置されるので出力するなり実行するなり好きにする
 tellraw @a {"storage":"concat:","nbt":"result"}
