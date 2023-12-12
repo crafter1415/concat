@@ -7,7 +7,7 @@
 # @within
 #   concat:concat/split/*
 
-data modify storage concat: substr.arg set from storage concat: split.arg
+data modify storage concat: substr.arg set from storage concat: split.target
 data modify storage concat: substr.from set from storage concat: split.imm
 data modify storage concat: substr.to set from storage concat: split.marker
 function concat:concat/substr/
@@ -16,3 +16,7 @@ data modify storage concat: split.result append from storage concat: substr.resu
 data remove storage concat: substr
 
 data modify storage concat: split.marker set from storage concat: split.imm
+
+execute if data storage concat: split{noEscLast:1b} run function concat:concat/split/join/
+
+#tellraw @s {"storage":"concat:","nbt":"split"}

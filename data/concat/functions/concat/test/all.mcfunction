@@ -74,12 +74,13 @@ data modify storage concat: test.iterator set value [\
         {unit:"evalcnt",args:{arg0:238,arg1:72},expected:{result:8}},\
         {unit:"evalcnt",args:{arg0:251,arg1:101},expected:{result:8}},\
 \
-        {unit:"split",args:{arg:""},expected:{result:[""]}},\
-        {unit:"split",args:{arg:"hoge"},expected:{result:["hoge"]}},\
-        {unit:"split",args:{arg:"h\\o\\g\\e"},expected:{result:["\\e","\\g","\\o","h"]}},\
-        {unit:"split",args:{arg:"h\"o\"g\"e"},expected:{result:["\"e","\"g","\"o","h"]}},\
-        {unit:"split",args:{arg:"h\\o\"g\\e"},expected:{result:["\\e","\"g","\\o","h"]}},\
-        {unit:"split",args:{arg:"\\\\\\\\"},expected:{result:["\\","\\","\\","\\",""]}},\
+        {unit:"split",args:{args:[""]},expected:{result:[""]}},\
+        {unit:"split",args:{args:["hoge"]},expected:{result:["hoge"]}},\
+        {unit:"split",args:{args:["h\\o\\g\\e"]},expected:{result:["\\e","\\g","\\o","h"]}},\
+        {unit:"split",args:{args:["h\"o\"g\"e"]},expected:{result:["\"e","\"g","\"o","h"]}},\
+        {unit:"split",args:{args:["h\\o\"g\\e"]},expected:{result:["\\e","\"g","\\o","h"]}},\
+        {unit:"split",args:{args:["\\\\\\\\"]},expected:{result:["\\","\\","\\","\\"]}},\
+        {unit:"split",args:{args:["h","\\","o\\g","\\e"]},expected:{result:["\\e","\\g","\\o","h"]}},\
 \
         {unit:"substr",args:{arg:"0123456789",from:0,to:5},expected:{result:"01234"}},\
         {unit:"substr",args:{arg:"0123456789",from:3,to:4},expected:{result:"3"}},\

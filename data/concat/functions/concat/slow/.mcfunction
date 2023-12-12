@@ -10,9 +10,7 @@
 #   storage concat: buffer
 #   storage concat: concat
 #   storage concat: esc
-#   storage concat: i
-#   storage concat: ni
-#   storage concat: noEsc
+#   storage concat: noEscLast
 #   storage concat: reversed
 #   storage concat: args_copy
 #   storage concat: size
@@ -29,7 +27,6 @@
 
 data modify storage concat: concat set value []
 data modify storage concat: buffer set value []
-data modify storage concat: noEsc set value []
 
 data modify storage concat: copy.arg set from storage concat: supplier
 function concat:concat/copy/
@@ -40,7 +37,12 @@ data remove storage concat: copy
 ## 引数の分割
 ## 終了時点で concat: concat は逆順になっている
 
-execute if data storage concat: args_copy[0] run function concat:concat/slow/itr0
+data modify storage concat: split.args set from storage concat: args_copy
+function concat:concat/split/
+data modify storage concat: concat set from storage concat: split.result
+data modify storage concat: noEscLast set from storage concat: split.noEscLast
+data remove storage concat: split
+
 data remove storage concat: args_copy
 data modify storage concat: reversed set value 1b
 #tellraw @a {"storage":"concat:","nbt":"{}"}
@@ -67,13 +69,9 @@ data remove storage concat: escgen
 ## 各要素に結合後丁度消える量のエスケープを追加する
 ## 終了時点で concat: concat は元の順番に戻る
 
-data modify storage concat: i set value 1
-data modify storage concat: ni set from storage concat: size
-execute unless data storage concat: {ni:0} run function concat:concat/slow/itr1
-data remove storage concat: i
-data remove storage concat: ni
+execute if data storage concat: concat[0] run function concat:concat/slow/itr1
 data remove storage concat: esc
-data remove storage concat: noEsc
+data remove storage concat: noEscLast
 data modify storage concat: concat set from storage concat: buffer
 data modify storage concat: buffer set value []
 execute store result storage concat: reversed byte 1 unless data storage concat: {reversed:1b}
