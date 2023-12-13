@@ -12,9 +12,9 @@
 # @within
 #   concat:concat/**
 
-data modify storage concat: split.result set value [""]
+data modify storage concat: split.result set value []
 data modify storage concat: split.argscopy set from storage concat: split.args
-data modify storage concat: split.noEscLast set value 1b
+data modify storage concat: split.noEscLast set value 0b
 
 execute store result storage concat: split.index int 1 run data get storage concat: split.arg0
 
