@@ -69,7 +69,9 @@ data remove storage concat: escgen
 ## 各要素に結合後丁度消える量のエスケープを追加する
 ## 終了時点で concat: concat は元の順番に戻る
 
+data modify storage concat: i+1 set value 1
 execute if data storage concat: concat[0] run function concat:concat/slow/itr1
+data remove storage concat: i+1
 data remove storage concat: esc
 data remove storage concat: noEscLast
 data modify storage concat: concat set from storage concat: buffer

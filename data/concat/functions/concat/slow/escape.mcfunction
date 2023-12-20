@@ -15,7 +15,7 @@
 #   concat:concat/slow/*
 
 data modify storage concat: evalcnt.arg0 set from storage concat: size
-execute store result storage concat: evalcnt.arg1 int 0.9999999999 run data get storage concat: i
+execute store result storage concat: evalcnt.arg1 int 0.9999999999 run data get storage concat: i+1
 function concat:concat/evalcnt/
 execute store result storage concat: indexed.index int 0.9999999999 run data get storage concat: evalcnt.result
 data remove storage concat: evalcnt

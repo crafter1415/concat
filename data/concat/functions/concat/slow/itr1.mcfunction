@@ -24,5 +24,8 @@ execute if data storage concat: {noEscLast:1b} run data remove storage concat: n
 data modify storage concat: buffer append from storage concat: target
 data remove storage concat: target
 
+## 誰だ中の関数の参照先を確認せずに変数を消したアホは！！
+execute store result storage concat: i+1 int -1 run data get storage concat: i+1 -1.0000000001
+
 # 要素が残っていればイテレーションを続ける
 execute if data storage concat: concat[0] run function concat:concat/slow/itr1
