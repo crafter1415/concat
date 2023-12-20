@@ -74,7 +74,7 @@ data modify storage concat: test.iterator set value [\
         {unit:"evalcnt",args:{arg0:238,arg1:72},expected:{result:8}},\
         {unit:"evalcnt",args:{arg0:251,arg1:101},expected:{result:8}},\
 \
-        {unit:"split",args:{args:[""]},expected:{result:[""]}},\
+        {unit:"split",args:{args:[""]},expected:{result:[]}},\
         {unit:"split",args:{args:["hoge"]},expected:{result:["hoge"]}},\
         {unit:"split",args:{args:["h\\o\\g\\e"]},expected:{result:["\\e","\\g","\\o","h"]}},\
         {unit:"split",args:{args:["h\"o\"g\"e"]},expected:{result:["\"e","\"g","\"o","h"]}},\
